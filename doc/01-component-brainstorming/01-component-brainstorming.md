@@ -200,20 +200,23 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: Album
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - The album is a data type that, similairily to an array, has a fixed size once you initialize it. The album contains map pairs whose key's are associated with song name and their value is associated with how much time in seconds each song will 'play" or be the current value. The main niche of this data type is it runs a count and switches what value is the value it will show you based on how much time is passed. You call the play fucntion on the album and a predetermined timer will run for the given amount of time and the value it will show is dependent on what time the timer is at.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - play(int i) - instance method that plays this for the given i amount of seconds.
+    - pause() - instance method that stops the count which causes the album to maintain its current value until played again.
+    - resume(int i) - Plays the album starting at what value it would be on on at the given time i.
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - deluxeEdition(int i) - instance method that creates a new album with length i that contains all of the original values of this plus empty spaces until the position length-1
+    - currentSong() - returns the key value of the map pair that corresponds to the current value
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - i don't know
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
-      Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      Answer and explain: 
+      - This component would rely on map and map.pair in order to operate using maps as the values album stores
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
       - <!-- TODO: provide an argument then delete this comment -->
