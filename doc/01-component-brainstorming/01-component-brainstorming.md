@@ -205,11 +205,15 @@ will likely refine your design to make your implementation easier to use.
     - The album is a data type that, similairily to an array, has a fixed size once you initialize it. The album contains map pairs whose key's are associated with song name and their value is associated with how much time in seconds each song will 'play" or be the current value. The main niche of this data type is it runs a count and switches what value is the value it will show you based on how much time is passed. You call the play fucntion on the album and a predetermined timer will run for the given amount of time and the value it will show is dependent on what time the timer is at.
   - **Kernel Methods**:
     - play(int i) - instance method that plays this for the given i amount of seconds.
-    - pause() - instance method that stops the count which causes the album to maintain its current value until played again.
+    - stop() - resets the time passed to 0 and stops the timer
     - resume(int i) - Plays the album starting at what value it would be on on at the given time i.
+    - deluxeEdition(int i) - instance method that creates a new album with length i that contains all of the original values of this plus empty spaces until the position length -1
+    - currentSong() - returns the key value of the map pair that corresponds to the current value 
   - **Secondary Methods**:
-    - deluxeEdition(int i) - instance method that creates a new album with length i that contains all of the original values of this plus empty spaces until the position length-1
-    - currentSong() - returns the key value of the map pair that corresponds to the current value
+    - shufflePlay() - starts play at a value
+    - restart() - re-play the album from first value and 0 seconds passed
+    - alternateEdition(int i, int k) - creates a new album with length i and that has all of the pairs from the original album except the pairs from index k-1 -> this.length-1
+    - pause() - stops the timer and returns the amount of seconds passed as an int
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
@@ -217,54 +221,63 @@ will likely refine your design to make your implementation easier to use.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain: 
       - This component would rely on map and map.pair in order to operate using maps as the values album stores
+      - This component would aslo need the java timer and array class since the album is an array of map.pairs.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I think this component will need a constant size when intiailized so the only way to change the albums size is by calling methods.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I can implement the secondary method using only kernal methods. Example: shuffle play just uses resume(i) where i is a random value between max seconds and 0
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: Jenga
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - A queue but each time an item is dequeued their is a chance that all of the data is removed. You have to enqueue the value that was dequeued back into the queue before dequeueing another value and each dequeue and enqueue has a chance to loose all data. The chances of enqueue causing data lass is smaller then dequeue.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - remove() - First checks if this.length = #This.length then removes first last value and has a chance to remove all data.
+    - add(T i) - Adds value to end of the queue with a smaller chance to remove all data
+    - length - reports length of this
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - append(Queue i) - concatinates i onto this
+    - flip() - reverses order of this
+    - top() - reports first value
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I dont know
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - This component would rely on the Queue class as it is built on a queue
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - The constraint for the jenga data type is that it is first in first out which is inherited form being built on a queue.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I can implement my secondary methods using the kernal methods for example append just uses add for each value in the queue
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #3: LinkedLoop
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - A linked list however the smart node at the end points to the smart node at the start instead of null
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - add() - adds value to end of list and links it to the first value
+    - remove(int i) - returns value at given index i and fixes the references
+    - size() - returns the size of this
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - addTo(int i) - adds value to specified index
+    - clear() - clears all values
+    - contains(T k) - returns true if the linkedLoop contains k
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I dont know
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - This compoent would not contain internal classes.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Contraints are the linkedLooptakes a long time to traverse.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I can implement my secondary methods with my kernal methods for example clear just uses remove to remove all of the values in the linkedLoop
 
 ## Post-Assignment
 
